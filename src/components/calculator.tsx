@@ -33,6 +33,11 @@ const Button = ({value, onClick}: ButtonProps) => {
     );
 };
 
+const Output = styled.div<{ result: number }>`
+    text-align: center;
+    background-color: ${props => ((props.result < 0) ? 'red' : 'black')};
+`;
+
 export function Calculator() {
 
     const [firstNumber, setFirstNum] = useState(0);
@@ -90,7 +95,7 @@ export function Calculator() {
                     onChange={(e) => setFirstNum(Number(e.target.value))} />
             <input type="number" placeholder="second number" value={secondNumber}
                     onChange={(e) => setSecondNum(Number(e.target.value))} />
-            <p>{result}</p>
+            <Output result={result}><p>{result}</p></Output>
         </>
     );
 
